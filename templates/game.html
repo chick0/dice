@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="utf-8">
+        <title>🎲 주사위</title>
+
+        <meta name="author" content="chick_0">
+        <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, shrink-to-fit=no">
+        <meta name="keywords" content="chick_0, 주사위, 🎲">
+        <meta name="description" content="주사위 굴리기!">
+
+        <meta property="og:type" content="website">
+        <meta property="og:locale" content="ko_KR">
+        <meta property="og:title" content="🎲 주사위">
+        <meta property="og:description" content="주사위 굴리기!">
+        <meta property="og:image" content="{{ url_for('src', img='icon192.png') }}">
+
+        <link rel="canonical" href="{{ request.base_url }}">
+        <link rel="stylesheet" href="{{ url_for('style') }}">
+
+        <meta name="theme-color" content="#FFFFFF">
+        <link rel="shortcut icon" href="/favicon.ico">
+
+        <link rel="icon" type="image/png" href="{{ url_for('src', img='icon192.png') }}" sizes="192x192">
+        <link rel="apple-touch-icon" sizes="192x192" href="{{ url_for('src', img='icon192.png') }}">
+    </head>
+    <body>
+        <div style="padding-top:15%">
+            <p>
+                <img id="d1" src="{{ url_for('src', img='1.png') }}" style="width:100px;">
+                <img id="d2" src="{{ url_for('src', img='1.png') }}" style="width:100px;">
+            </p>
+            <p>
+                <button id="droll" class="btn">주사위 다시 굴리기</button>
+            </p>
+        </div>
+
+        <script type="text/javascript">
+            function roll(){
+                Math.random(); document.getElementById("d1").src = `/src/${Math.round(Math.random() * 5 + 1)}.png`;
+                Math.random(); document.getElementById("d2").src = `/src/${Math.round(Math.random() * 5 + 1)}.png`;
+            }
+            window.onload = roll();
+
+            document.getElementById("droll").addEventListener('click', roll);
+        </script>
+    </body>
+</html>
