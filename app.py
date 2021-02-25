@@ -13,6 +13,17 @@ from paste.translogger import TransLogger
 
 
 BASE_DIR = path.dirname(__file__)
+globals().update({
+    "1.png": open(path.join(BASE_DIR, "src", "1.png"), "rb").read(),
+    "2.png": open(path.join(BASE_DIR, "src", "2.png"), "rb").read(),
+    "3.png": open(path.join(BASE_DIR, "src", "3.png"), "rb").read(),
+    "4.png": open(path.join(BASE_DIR, "src", "4.png"), "rb").read(),
+    "5.png": open(path.join(BASE_DIR, "src", "5.png"), "rb").read(),
+    "6.png": open(path.join(BASE_DIR, "src", "6.png"), "rb").read(),
+
+    "favicon.ico": open(path.join(BASE_DIR, "src", "favicon.ico"), "rb").read(),
+    "icon192.png": open(path.join(BASE_DIR, "src", "icon192.png"), "rb").read(),
+})
 
 
 def create_app():
@@ -79,18 +90,6 @@ if __name__ == "__main__":
 
     logger = getLogger("wsgi")
     logger.addHandler(FileHandler(path.join(BASE_DIR, "wsgi.log")))
-
-    globals().update({
-        "1.png": open(path.join(BASE_DIR, "src", "1.png"), "rb").read(),
-        "2.png": open(path.join(BASE_DIR, "src", "2.png"), "rb").read(),
-        "3.png": open(path.join(BASE_DIR, "src", "3.png"), "rb").read(),
-        "4.png": open(path.join(BASE_DIR, "src", "4.png"), "rb").read(),
-        "5.png": open(path.join(BASE_DIR, "src", "5.png"), "rb").read(),
-        "6.png": open(path.join(BASE_DIR, "src", "6.png"), "rb").read(),
-
-        "favicon.ico": open(path.join(BASE_DIR, "src", "favicon.ico"), "rb").read(),
-        "icon192.png": open(path.join(BASE_DIR, "src", "icon192.png"), "rb").read(),
-    })
 
     serve(
         app=TransLogger(
